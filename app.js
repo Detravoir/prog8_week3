@@ -49,7 +49,6 @@ inputElement.addEventListener("change", (e) => {
         score++;
         scoreElement.innerText = `Score: ${score}`;
       label.innerText = `Prediction: ${results[0].label} (${results[0].confidence.toFixed(2)})`;
-      label.style.display = "none";
       if (label.innerText.includes("raccoon")){
         speak("This is probably a raccoon!");
       } else if(label.innerText.includes("cat")){
