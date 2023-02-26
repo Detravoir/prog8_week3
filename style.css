@@ -10,3 +10,7 @@ body {
     align-items: center;
     align-self: center;
 }
+
+.header-text{
+    text-align: center;
+}
