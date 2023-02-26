@@ -12,6 +12,7 @@ const loss = document.getElementById("loss");
 const result = document.getElementById("result");
 const confidence = document.getElementById("confidence");
 const predict = document.getElementById("predict");
+const save = document.getElementById("save");
 
 let totalLoss = 0;
 labelOneBtn.addEventListener("click", () => console.log("button 1"));
@@ -85,6 +86,10 @@ function videoReady() {
     }
   }
   
+  save.onclick = function() {
+    featureExtractor.save();
+  };
+
   // Start predicting when the predict button is clicked
   predict.onclick = function() {
     classifier.classify(gotResults);
