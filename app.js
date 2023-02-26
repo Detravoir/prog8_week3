@@ -43,15 +43,14 @@ inputElement.addEventListener("change", (e) => {
         return;
       }
       label.innerText = `Prediction: ${results[0].label} (${results[0].confidence.toFixed(2)})`;
+      label.style.display = "none";
       if (label.innerText.includes("raccoon")){
-        speak("raccoon");
+        speak("This is probably a raccoon!");
       } else if(label.innerText.includes("cat")){
-        speak("cat");
+        speak("This must be a cat.");
       }
     });
   };
-
-
 
   // Add the image element to the DOM
   const uploadedImage = document.createElement("img");
