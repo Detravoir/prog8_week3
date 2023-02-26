@@ -19,6 +19,9 @@ function speak(text){
   }
 }
 
+let score = 0;
+const scoreElement = document.getElementById("score")
+
 // Listen for when the user selects an image
 const inputElement = document.getElementById("image");
 inputElement.addEventListener("change", (e) => {
@@ -42,6 +45,9 @@ inputElement.addEventListener("change", (e) => {
         console.error(err);
         return;
       }
+      if(results[0].confidence >= 0.80){
+        score++;
+        scoreElement.innerText = `Score: ${score}`;
       label.innerText = `Prediction: ${results[0].label} (${results[0].confidence.toFixed(2)})`;
       label.style.display = "none";
       if (label.innerText.includes("raccoon")){
@@ -49,11 +55,27 @@ inputElement.addEventListener("change", (e) => {
       } else if(label.innerText.includes("cat")){
         speak("This must be a cat.");
       }
+    } else{
+      speak("It looks like its neither a raccoon or a cat, or i am not trained enough");
+    }
     });
   };
 
   // Add the image element to the DOM
   const uploadedImage = document.createElement("img");
   uploadedImage.src = URL.createObjectURL(imageFile);
+
+  // Set the maximum width for the uploaded image
+  const maxWidth = 500;
+
+  // Resize the image if it exceeds the maximum width
+  uploadedImage.onload = () => {
+    if (uploadedImage.width > maxWidth) {
+      const scaleFactor = maxWidth / uploadedImage.width;
+      uploadedImage.width = maxWidth;
+      uploadedImage.height = 400;
+    }
+  };
+
   imageContainer.appendChild(uploadedImage);
 });

@@ -5,19 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="app.js"></script>
     <link rel="stylesheet" href="style.css" />
     <title>Cat or Raccoon?</title>
   </head>
   <body>
-    <h2 class="text-center text-xl">If you want to know the difference between a cat and raccoon ask me! show me a picture and i will magically know wich of the 2 it is.</h2>
-    <input id="image" type="file" />
-    <div id="image-container" style="width: 500px;"></div>
-    <h6 class="text-center">
-      <span id="loading">Loading base model...</span>
-    </h6>
-    
-    <div id="label" class="text-center"></div>
+    <div class="container">
+      <h3 class="header-text">If you want to know the difference between a cat and raccoon ask me!
+         show me a picture and i will magically know wich of the 2 it is.</h3>
+      <input id="image" type="file" />
+      <div id="image-container"></div>
+      <h6 class="text-center">
+        <span id="loading">Loading base model...</span>
+      </h6>
+      
+      <div id="label" class="text-center"></div>
+      <span id="score"></span>
+    </div>
   </body>
 </html>
